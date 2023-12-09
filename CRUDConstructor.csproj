@@ -11,7 +11,10 @@
   <ItemGroup>
     <Folder Include="DataAccessObject\" />
     <Folder Include="Controller\" />
-    <Folder Include="View\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.2.0" />
   </ItemGroup>
 
 </Project>
