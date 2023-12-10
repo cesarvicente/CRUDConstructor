@@ -24,5 +24,27 @@ namespace CRUDConstructor.Model
         public string sslMode { get; set; } = "none";
 
         public string getStringConnection() => $"datasource={hostname};database={dataBase};port={port};userId={username};password={password};SslMode={sslMode};AllowPublicKeyRetrieval=True";
+
+        public MySqlConnection getMysqlConnection()
+        {
+            var conn = new MySqlConnection(getStringConnection());
+            return conn;
+
+        }
+
+        public (bool, string) testMysqlConnection()
+        {
+            var coon = getMysqlConnection();
+
+            try
+            {
+                coon.Open();
+                return (true, $"Connection Successfully!\nHost: {hostname}\nPort: {port}\nUser: {username}");
+            }
+            catch (Exception ex)
+            {
+                return (true, $"Failed to Connect to MySQL at {hostname}:{port} with user {username}\n{ex.Message}");
+            }
+        }
     }
 }
