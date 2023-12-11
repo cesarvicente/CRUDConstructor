@@ -37,7 +37,7 @@
             lblUsername = new Label();
             btConnect = new Button();
             lblHostname = new Label();
-            textBox1 = new TextBox();
+            txtDataBase = new TextBox();
             txtPassword = new TextBox();
             txtUsername = new TextBox();
             txtHostname = new TextBox();
@@ -45,6 +45,7 @@
             lblName = new Label();
             btOk = new Button();
             btCancel = new Button();
+            btSave = new Button();
             tbcConnectionDB.SuspendLayout();
             tpParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudPort).BeginInit();
@@ -69,7 +70,7 @@
             tpParameters.Controls.Add(lblUsername);
             tpParameters.Controls.Add(btConnect);
             tpParameters.Controls.Add(lblHostname);
-            tpParameters.Controls.Add(textBox1);
+            tpParameters.Controls.Add(txtDataBase);
             tpParameters.Controls.Add(txtPassword);
             tpParameters.Controls.Add(txtUsername);
             tpParameters.Controls.Add(txtHostname);
@@ -141,6 +142,7 @@
             btConnect.TabIndex = 5;
             btConnect.Text = "Connect";
             btConnect.UseVisualStyleBackColor = true;
+            btConnect.Click += btConnect_Click;
             // 
             // lblHostname
             // 
@@ -152,13 +154,13 @@
             lblHostname.Text = "Hostname:";
             lblHostname.TextAlign = ContentAlignment.TopRight;
             // 
-            // textBox1
+            // txtDataBase
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(79, 129);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(260, 23);
-            textBox1.TabIndex = 8;
+            txtDataBase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtDataBase.Location = new Point(79, 129);
+            txtDataBase.Name = "txtDataBase";
+            txtDataBase.Size = new Size(260, 23);
+            txtDataBase.TabIndex = 8;
             // 
             // txtPassword
             // 
@@ -212,6 +214,7 @@
             btOk.TabIndex = 4;
             btOk.Text = "OK";
             btOk.UseVisualStyleBackColor = true;
+            btOk.Click += btOk_Click;
             // 
             // btCancel
             // 
@@ -224,6 +227,17 @@
             btCancel.UseVisualStyleBackColor = true;
             btCancel.Click += btCancel_Click;
             // 
+            // btSave
+            // 
+            btSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btSave.Location = new Point(18, 251);
+            btSave.Name = "btSave";
+            btSave.Size = new Size(78, 23);
+            btSave.TabIndex = 6;
+            btSave.Text = "Save";
+            btSave.UseVisualStyleBackColor = true;
+            btSave.Click += btSave_Click;
+            // 
             // formConnection
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -233,6 +247,7 @@
             Controls.Add(txtConnectionName);
             Controls.Add(lblName);
             Controls.Add(btOk);
+            Controls.Add(btSave);
             Controls.Add(btCancel);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -265,6 +280,7 @@
         private TextBox txtPassword;
         private TextBox txtUsername;
         private Label lblDataBase;
-        private TextBox textBox1;
+        private TextBox txtDataBase;
+        private Button btSave;
     }
 }

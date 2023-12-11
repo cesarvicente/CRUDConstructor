@@ -1,14 +1,19 @@
 ﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CRUDConstructor.Model
 {
     public class DataBaseConnection
     {
+        [Key, Display(Name = "name", Description = "name")]
         public string name { get; set; } = string.Empty;
 
         public string hostname { get; set; } = string.Empty;
@@ -23,18 +28,18 @@ namespace CRUDConstructor.Model
 
         public string sslMode { get; set; } = "none";
 
-        public string getStringConnection() => $"datasource={hostname};database={dataBase};port={port};userId={username};password={password};SslMode={sslMode};AllowPublicKeyRetrieval=True";
+        public string GetStringConnection() => $"datasource={hostname};database={dataBase};port={port};userId={username};password={password};SslMode={sslMode};AllowPublicKeyRetrieval=True";
 
-        public MySqlConnection getMysqlConnection()
+        public MySqlConnection GetMysqlConnection()
         {
-            var conn = new MySqlConnection(getStringConnection());
+            var conn = new MySqlConnection(GetStringConnection());
             return conn;
 
         }
 
-        public (bool, string) testMysqlConnection()
+        public (bool, string) TestMysqlConnection()
         {
-            var coon = getMysqlConnection();
+            var coon = GetMysqlConnection();
 
             try
             {
@@ -43,8 +48,11 @@ namespace CRUDConstructor.Model
             }
             catch (Exception ex)
             {
-                return (true, $"Failed to Connect to MySQL at {hostname}:{port} with user {username}\n{ex.Message}");
+                return (false, $"Failed to Connect to MySQL at {hostname}:{port} with user {username}\n\n{ex.Message}");
             }
         }
+
+        public string GetJson() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
     }
 }
