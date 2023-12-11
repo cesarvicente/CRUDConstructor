@@ -11,19 +11,17 @@ namespace CRUDConstructor
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            AppDomain.CurrentDomain.UnhandledException += GlobalExceptioHandler;
+            CreateLocalDirectory();
             Application.Run(new formConnection());
 
         }
 
-        private static void GlobalExceptioHandler(object sender, UnhandledExceptionEventArgs e)
+        private static void CreateLocalDirectory()
         {
-            Exception ex = (Exception)e.ExceptionObject;
+            string programDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CRUDConstructor");
 
-            if (ex != null)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            if (!Directory.Exists(programDirectory)) Directory.CreateDirectory(programDirectory);
         }
+
     }
 }
