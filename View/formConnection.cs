@@ -30,7 +30,7 @@ namespace CRUDConstructor
                 writer.Write(connection.GetJson());
             }
 
-            MessageBox.Show("Salvo em com Sucesso!");
+            MessageBox.Show("Save successfully!");
         }
         
         private void LoadDataBaseConnection()
