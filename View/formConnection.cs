@@ -8,10 +8,12 @@ namespace CRUDConstructor
     public partial class formConnection : Form
     {
         private string _filePath;
+        private string _directoryPath;
         public formConnection()
         {
             InitializeComponent();
             _filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CRUDConstructor\\DataConnection.json");
+            _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CRUDConstructor");
             LoadDataBaseConnection();
         }
 
@@ -21,6 +23,13 @@ namespace CRUDConstructor
 
             if (!File.Exists(_filePath))
             {
+                //if (Directory.Exists(_filePath.Replace("\\DataConnection.json", string.Empty)))
+                //{
+                //    Directory.CreateDirectory(_filePath.Replace("\\DataConnection.json", string.Empty));
+                //}
+                    
+
+
                 FileStream fs = File.Create(_filePath);
                 fs.Close();
             }
