@@ -1,4 +1,5 @@
 ﻿using CRUDConstructor.Model;
+using CRUDConstructor.View;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text.Json;
@@ -8,7 +9,6 @@ namespace CRUDConstructor
     public partial class formConnection : Form
     {
         private string _filePath;
-        private string _directoryPath;
         public formConnection()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace CRUDConstructor
 
             MessageBox.Show("Save successfully!");
         }
-        
+
         private void LoadDataBaseConnection()
         {
             if (!File.Exists(_filePath)) return;
@@ -70,7 +70,7 @@ namespace CRUDConstructor
             txtUsername.Text = connection.username;
             txtPassword.Text = connection.password;
             txtDataBase.Text = connection.dataBase;
-        } 
+        }
 
         private void btSave_Click(object sender, EventArgs e)
         {
@@ -82,6 +82,7 @@ namespace CRUDConstructor
             var connection = GetDataBaseConnection();
             (bool, string) testReturn = connection.TestMysqlConnection();
 
+            btOk.Enabled = testReturn.Item1;
             MessageBox.Show(testReturn.Item2);
         }
 
@@ -92,7 +93,14 @@ namespace CRUDConstructor
 
         private void btOk_Click(object sender, EventArgs e)
         {
+            Hide();
+            new formConstructor(GetDataBaseConnection().GetMysqlConnection()).ShowDialog();
+            Close();
+        }
 
+        private void AllTextBox_TextChanged(object sender, EventArgs e)
+        {
+            btOk.Enabled = false;
         }
     }
 }

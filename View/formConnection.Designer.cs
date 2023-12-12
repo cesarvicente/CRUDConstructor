@@ -89,8 +89,9 @@
             nudPort.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
             nudPort.Name = "nudPort";
             nudPort.Size = new Size(73, 23);
-            nudPort.TabIndex = 9;
+            nudPort.TabIndex = 2;
             nudPort.Value = new decimal(new int[] { 3306, 0, 0, 0 });
+            nudPort.ValueChanged += AllTextBox_TextChanged;
             // 
             // lblPort
             // 
@@ -139,7 +140,7 @@
             btConnect.Location = new Point(345, 130);
             btConnect.Name = "btConnect";
             btConnect.Size = new Size(111, 23);
-            btConnect.TabIndex = 5;
+            btConnect.TabIndex = 6;
             btConnect.Text = "Connect";
             btConnect.UseVisualStyleBackColor = true;
             btConnect.Click += btConnect_Click;
@@ -160,7 +161,8 @@
             txtDataBase.Location = new Point(79, 129);
             txtDataBase.Name = "txtDataBase";
             txtDataBase.Size = new Size(260, 23);
-            txtDataBase.TabIndex = 8;
+            txtDataBase.TabIndex = 5;
+            txtDataBase.TextChanged += AllTextBox_TextChanged;
             // 
             // txtPassword
             // 
@@ -169,7 +171,8 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '●';
             txtPassword.Size = new Size(377, 23);
-            txtPassword.TabIndex = 8;
+            txtPassword.TabIndex = 4;
+            txtPassword.TextChanged += AllTextBox_TextChanged;
             // 
             // txtUsername
             // 
@@ -177,7 +180,8 @@
             txtUsername.Location = new Point(79, 47);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(377, 23);
-            txtUsername.TabIndex = 8;
+            txtUsername.TabIndex = 3;
+            txtUsername.TextChanged += AllTextBox_TextChanged;
             // 
             // txtHostname
             // 
@@ -185,7 +189,8 @@
             txtHostname.Location = new Point(79, 6);
             txtHostname.Name = "txtHostname";
             txtHostname.Size = new Size(260, 23);
-            txtHostname.TabIndex = 8;
+            txtHostname.TabIndex = 1;
+            txtHostname.TextChanged += AllTextBox_TextChanged;
             // 
             // txtConnectionName
             // 
@@ -193,7 +198,7 @@
             txtConnectionName.Location = new Point(125, 12);
             txtConnectionName.Name = "txtConnectionName";
             txtConnectionName.Size = new Size(355, 23);
-            txtConnectionName.TabIndex = 8;
+            txtConnectionName.TabIndex = 0;
             // 
             // lblName
             // 
@@ -208,10 +213,11 @@
             // btOk
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btOk.Enabled = false;
             btOk.Location = new Point(402, 251);
             btOk.Name = "btOk";
             btOk.Size = new Size(78, 23);
-            btOk.TabIndex = 4;
+            btOk.TabIndex = 9;
             btOk.Text = "OK";
             btOk.UseVisualStyleBackColor = true;
             btOk.Click += btOk_Click;
@@ -222,7 +228,7 @@
             btCancel.Location = new Point(318, 251);
             btCancel.Name = "btCancel";
             btCancel.Size = new Size(78, 23);
-            btCancel.TabIndex = 6;
+            btCancel.TabIndex = 8;
             btCancel.Text = "Cancel";
             btCancel.UseVisualStyleBackColor = true;
             btCancel.Click += btCancel_Click;
@@ -233,7 +239,7 @@
             btSave.Location = new Point(18, 251);
             btSave.Name = "btSave";
             btSave.Size = new Size(78, 23);
-            btSave.TabIndex = 6;
+            btSave.TabIndex = 7;
             btSave.Text = "Save";
             btSave.UseVisualStyleBackColor = true;
             btSave.Click += btSave_Click;
