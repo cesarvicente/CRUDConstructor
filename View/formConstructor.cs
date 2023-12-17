@@ -1,8 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CRUDConstructor.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,7 @@ namespace CRUDConstructor.View
             InitializeComponent();
             loadTableList_cbTable();
 
+
         }
 
         private void loadTableList_cbTable()
@@ -36,33 +39,28 @@ namespace CRUDConstructor.View
 
         }
 
-        private List<string> loadColumns(string _column)
+        private void loadCBTypes()
         {
-            var columns = _controllerConnection.getColumnsList(_column);
+            var listTypes = new codeType("").GetDefaultList();
 
-            var stringColumnList = new List<string>();
-
-            foreach (Model.DataBaseTable column in columns)
-            {
-                stringColumnList.Add(column.Field);
-            }
-
-            return stringColumnList;
+            var cbTypeColumn = (DataGridViewComboBoxColumn)dgvColumns.Columns["cbTypeColumn"];
+            cbTypeColumn.DataSource = listTypes;
+            cbTypeColumn.DisplayMember = "name";
+            cbTypeColumn.ValueMember = "type";
         }
 
-        private void btLoadData_Click(object sender, EventArgs e)
+        private void loadColumnList(DataGridView _dataGrid)
         {
-            loadColumns();
-        }
+            var columns = _controllerConnection.getColumnsList(lbColumns.SelectedItem);
 
-        private void loadColumns()
-        {
-            cklbListColumns.DataSource = loadColumns(lbColumns.SelectedItems[0].ToString());
+            _dataGrid.DataSource = columns;
         }
 
         private void lbColumns_SelectedValueChanged(object sender, EventArgs e)
         {
-            loadColumns();
+            loadColumnList(dgvColumns);
+            loadCBTypes();
         }
+
     }
 }

@@ -21,5 +21,7 @@ namespace CRUDConstructor.Controller
         public List<string> getListTables() => data.getTablesList();
 
         public List<Model.DataBaseTable> getColumnsList(string table) => data.getColumnsList(table);
+
+        public List<Model.DataBaseTable> getColumnsList(object table) => data.getColumnsList(Convert.ToString(table));
     }
 }

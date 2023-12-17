@@ -67,7 +67,7 @@ namespace CRUDConstructor.DataAccessObject
                         MySqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            columnList.Add(new Model.DataBaseTable()
+                            var item = new Model.DataBaseTable()
                             {
                                 Field = reader["Field"].ToString(),
                                 Type = reader["Type"].ToString(),
@@ -75,7 +75,9 @@ namespace CRUDConstructor.DataAccessObject
                                 Key = reader["Key"].ToString(),
                                 DefaultValue = reader["Default"].ToString(),
                                 ExtraArguments = reader["Extra"].ToString(),
-                            });
+                            };
+                            item.getTypeFromDataBase();
+                            columnList.Add(item);
                         }
 
                     }

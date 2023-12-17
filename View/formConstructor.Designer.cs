@@ -28,13 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             cbTable = new ComboBox();
             lblTable = new Label();
-            btLoadData = new Button();
             gbColumns = new GroupBox();
+            dgvColumns = new DataGridView();
+            dataBaseTableBindingSource2 = new BindingSource(components);
+            dataBaseTableBindingSource = new BindingSource(components);
             lbColumns = new ListBox();
-            cklbListColumns = new CheckedListBox();
+            dataBaseTableBindingSource1 = new BindingSource(components);
+            cbTypeColumn = new DataGridViewComboBoxColumn();
+            extraArgumentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            defaultValueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            keyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nullableDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            typeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fieldDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             gbColumns.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvColumns).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // cbTable
@@ -54,27 +70,58 @@
             lblTable.TabIndex = 1;
             lblTable.Text = "Table";
             // 
-            // btLoadData
-            // 
-            btLoadData.Location = new Point(12, 56);
-            btLoadData.Name = "btLoadData";
-            btLoadData.Size = new Size(234, 23);
-            btLoadData.TabIndex = 3;
-            btLoadData.Text = "Load Columns";
-            btLoadData.UseVisualStyleBackColor = true;
-            btLoadData.Click += btLoadData_Click;
-            // 
             // gbColumns
             // 
             gbColumns.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbColumns.Controls.Add(dgvColumns);
             gbColumns.Controls.Add(lbColumns);
-            gbColumns.Controls.Add(cklbListColumns);
-            gbColumns.Location = new Point(12, 108);
+            gbColumns.Location = new Point(12, 56);
             gbColumns.Name = "gbColumns";
-            gbColumns.Size = new Size(788, 327);
+            gbColumns.Size = new Size(809, 327);
             gbColumns.TabIndex = 6;
             gbColumns.TabStop = false;
             gbColumns.Text = "Data Source";
+            // 
+            // dgvColumns
+            // 
+            dgvColumns.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dgvColumns.AutoGenerateColumns = false;
+            dgvColumns.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.GrayText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvColumns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvColumns.ColumnHeadersHeight = 30;
+            dgvColumns.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvColumns.Columns.AddRange(new DataGridViewColumn[] { fieldDataGridViewTextBoxColumn, typeDataGridViewTextBoxColumn, cbTypeColumn, nullableDataGridViewCheckBoxColumn, keyDataGridViewTextBoxColumn, defaultValueDataGridViewTextBoxColumn, extraArgumentsDataGridViewTextBoxColumn });
+            dgvColumns.DataSource = dataBaseTableBindingSource;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.GrayText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvColumns.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvColumns.Location = new Point(190, 22);
+            dgvColumns.Name = "dgvColumns";
+            dgvColumns.RowHeadersWidth = 10;
+            dgvColumns.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvColumns.RowTemplate.Height = 20;
+            dgvColumns.Size = new Size(613, 289);
+            dgvColumns.TabIndex = 7;
+            // 
+            // dataBaseTableBindingSource2
+            // 
+            dataBaseTableBindingSource2.DataSource = typeof(Model.DataBaseTable);
+            // 
+            // dataBaseTableBindingSource
+            // 
+            dataBaseTableBindingSource.DataSource = typeof(Model.DataBaseTable);
             // 
             // lbColumns
             // 
@@ -82,25 +129,74 @@
             lbColumns.ItemHeight = 15;
             lbColumns.Location = new Point(6, 22);
             lbColumns.Name = "lbColumns";
-            lbColumns.Size = new Size(385, 289);
+            lbColumns.Size = new Size(178, 289);
             lbColumns.TabIndex = 7;
             lbColumns.SelectedValueChanged += lbColumns_SelectedValueChanged;
             // 
-            // cklbListColumns
+            // dataBaseTableBindingSource1
             // 
-            cklbListColumns.FormattingEnabled = true;
-            cklbListColumns.Location = new Point(397, 22);
-            cklbListColumns.Name = "cklbListColumns";
-            cklbListColumns.Size = new Size(385, 292);
-            cklbListColumns.TabIndex = 2;
+            dataBaseTableBindingSource1.DataSource = typeof(Model.DataBaseTable);
+            // 
+            // cbTypeColumn
+            // 
+            cbTypeColumn.DataPropertyName = "cbTypeColumn";
+            cbTypeColumn.DataSource = dataBaseTableBindingSource2;
+            cbTypeColumn.HeaderText = "C# Type";
+            cbTypeColumn.Name = "cbTypeColumn";
+            cbTypeColumn.ValueMember = "codeType";
+            // 
+            // extraArgumentsDataGridViewTextBoxColumn
+            // 
+            extraArgumentsDataGridViewTextBoxColumn.DataPropertyName = "ExtraArguments";
+            extraArgumentsDataGridViewTextBoxColumn.HeaderText = "ExtraArguments";
+            extraArgumentsDataGridViewTextBoxColumn.Name = "extraArgumentsDataGridViewTextBoxColumn";
+            extraArgumentsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // defaultValueDataGridViewTextBoxColumn
+            // 
+            defaultValueDataGridViewTextBoxColumn.DataPropertyName = "DefaultValue";
+            defaultValueDataGridViewTextBoxColumn.HeaderText = "DefaultValue";
+            defaultValueDataGridViewTextBoxColumn.Name = "defaultValueDataGridViewTextBoxColumn";
+            defaultValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // keyDataGridViewTextBoxColumn
+            // 
+            keyDataGridViewTextBoxColumn.DataPropertyName = "Key";
+            keyDataGridViewTextBoxColumn.HeaderText = "Key";
+            keyDataGridViewTextBoxColumn.Name = "keyDataGridViewTextBoxColumn";
+            keyDataGridViewTextBoxColumn.ReadOnly = true;
+            keyDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.False;
+            keyDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nullableDataGridViewCheckBoxColumn
+            // 
+            nullableDataGridViewCheckBoxColumn.DataPropertyName = "Nullable";
+            nullableDataGridViewCheckBoxColumn.HeaderText = "Null";
+            nullableDataGridViewCheckBoxColumn.Name = "nullableDataGridViewCheckBoxColumn";
+            nullableDataGridViewCheckBoxColumn.ReadOnly = true;
+            nullableDataGridViewCheckBoxColumn.Resizable = DataGridViewTriState.False;
+            nullableDataGridViewCheckBoxColumn.Width = 50;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fieldDataGridViewTextBoxColumn
+            // 
+            fieldDataGridViewTextBoxColumn.DataPropertyName = "Field";
+            fieldDataGridViewTextBoxColumn.HeaderText = "Field";
+            fieldDataGridViewTextBoxColumn.Name = "fieldDataGridViewTextBoxColumn";
+            fieldDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // formConstructor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(812, 617);
+            ClientSize = new Size(833, 397);
             Controls.Add(gbColumns);
-            Controls.Add(btLoadData);
             Controls.Add(lblTable);
             Controls.Add(cbTable);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -109,6 +205,10 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "Settings";
             gbColumns.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvColumns).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,9 +217,18 @@
 
         private ComboBox cbTable;
         private Label lblTable;
-        private Button btLoadData;
         private GroupBox gbColumns;
-        private CheckedListBox cklbListColumns;
         private ListBox lbColumns;
+        private DataGridView dgvColumns;
+        private BindingSource dataBaseTableBindingSource;
+        private BindingSource dataBaseTableBindingSource1;
+        private BindingSource dataBaseTableBindingSource2;
+        private DataGridViewTextBoxColumn fieldDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private DataGridViewComboBoxColumn cbTypeColumn;
+        private DataGridViewCheckBoxColumn nullableDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn defaultValueDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn extraArgumentsDataGridViewTextBoxColumn;
     }
 }
