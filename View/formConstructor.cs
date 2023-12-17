@@ -33,16 +33,13 @@ namespace CRUDConstructor.View
         private void loadTableList_cbTable()
         {
             var listTables = _controllerConnection.getListTables();
-
             cbTable.DataSource = listTables;
             lbColumns.DataSource = listTables;
-
         }
 
         private void loadCBTypes()
         {
-            var listTypes = new codeType("").GetDefaultList();
-
+            var listTypes = new codeType().GetDefaultList();
             var cbTypeColumn = (DataGridViewComboBoxColumn)dgvColumns.Columns["cbTypeColumn"];
             cbTypeColumn.DataSource = listTypes;
             cbTypeColumn.DisplayMember = "name";

@@ -12,13 +12,13 @@ namespace CRUDConstructor.Model
 
         private string _typeFormat;
 
-        public string Type 
+        public string DbType
         {
-            get { return _typeFormat; } 
-            set {  _typeFormat = value?.ToUpper(); } 
+            get { return _typeFormat; }
+            set { _typeFormat = value?.ToUpper(); }
         }
 
-        public codeType codeType { get; set; }
+        public Type codeType { get; set; }
 
         public bool Nullable { get; set; }
 
@@ -30,34 +30,47 @@ namespace CRUDConstructor.Model
 
         public override string ToString()
         {
-            string text = $"{Field} || {Type.ToUpper()} {ExtraArguments.ToUpper()}";
+            string text = $"{Field} || {DbType.ToUpper()} {ExtraArguments.ToUpper()}";
             return text;
         }
-        
-        public void getTypeFromDataBase()
+
+        public void getCodeType()
         {
-            switch (Type)
+            switch (DbType)
             {
                 case string s when s.Contains("VARCHAR"):
-                    codeType =  new codeType("string");
+                    codeType = typeof(string);
                     break;
 
                 case string s when s.Contains("INT"):
-                    codeType = new codeType("int");
-                    break;
-
-                case string s when s.Contains("DECIMAL"):
-                    codeType = new codeType("decimal");
+                    codeType = typeof(int);
                     break;
 
                 case string s when s.Contains("DOUBLE"):
-                    codeType = new codeType("double");
+                    codeType = typeof(double);
+                    break;
+
+                case string s when s.Contains("DECIMAL"):
+                    codeType = typeof(decimal);
+                    break;
+
+                case string s when s.Contains("BOOLEAN"):
+                    codeType = typeof(bool);
+                    break;
+
+                case string s when s.Contains("DATE"):
+                    codeType = typeof(DateTime);
+                    break;
+
+                case string s when s.Contains("BLOB"):
+                    codeType = typeof(byte[]);
                     break;
 
                 default:
-                    codeType = new codeType("string");
+                    codeType = typeof(string);
                     break;
             }
-        }
+        } 
+
     }
 }

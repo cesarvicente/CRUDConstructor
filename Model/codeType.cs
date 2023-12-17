@@ -8,7 +8,7 @@ namespace CRUDConstructor.Model
 {
     public class codeType
     {
-        public codeType(string name) { this.name = name; }
+        public codeType(string name = "") { this.name = name; }
 
         public string name { get; set; }
 
@@ -20,6 +20,8 @@ namespace CRUDConstructor.Model
                     case "double": return typeof(double);
                     case "decimal": return typeof(decimal);
                     case "bool": return typeof(bool);
+                    case "DateTime": return typeof(DateTime);
+                    case "byte[]": return typeof(byte[]);
                 }
             } }
 
@@ -29,9 +31,11 @@ namespace CRUDConstructor.Model
             {
                 new codeType("string"),
                 new codeType("int"),
-                new codeType("bool"),
                 new codeType("double"),
                 new codeType("decimal"),
+                new codeType("bool"),
+                new codeType("DateTime"),
+                new codeType("byte[]"),
             };
         }
     }

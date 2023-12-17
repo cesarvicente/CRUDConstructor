@@ -70,13 +70,13 @@ namespace CRUDConstructor.DataAccessObject
                             var item = new Model.DataBaseTable()
                             {
                                 Field = reader["Field"].ToString(),
-                                Type = reader["Type"].ToString(),
+                                DbType = reader["Type"].ToString(),
                                 Nullable = reader["Null"].ToString() == "YES" ? true : false,
                                 Key = reader["Key"].ToString(),
                                 DefaultValue = reader["Default"].ToString(),
                                 ExtraArguments = reader["Extra"].ToString(),
                             };
-                            item.getTypeFromDataBase();
+                            item.getCodeType();
                             columnList.Add(item);
                         }
 
