@@ -12,12 +12,14 @@ namespace CRUDConstructor.Controller
         private MySqlConnection conn;
         private DataAccessObject.Connection data;
 
-        public Connection(MySqlConnection _conn)
+        public Connection(MySqlConnection conn)
         {
-            conn = _conn;
-            data = new DataAccessObject.Connection(conn);
+            this.conn = conn;
+            data = new DataAccessObject.Connection(this.conn);
         }
 
         public List<string> getListTables() => data.getTablesList();
+
+        public List<Model.DataBaseTable> getColumnsList(string table) => data.getColumnsList(table);
     }
 }
