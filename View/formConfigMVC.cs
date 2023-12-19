@@ -35,22 +35,29 @@ namespace CRUDConstructor.View
         {
             string nameSpace = "CRUDConstructor.Model";
 
-            StringBuilder sb = new StringBuilder();
+            var sbUsing = new StringBuilder();
+            var sbBodyCode = new StringBuilder();
+            var sbClass = new StringBuilder();
 
-            sb.Append("" +
+            sbUsing.Append("" +
                 "using System;\n" +
                 "using System.Collections.Generic;\n" +
                 "using System.Linq;\n" +
                 "using System.Text;\n" +
-                "using System.Threading.Tasks;\n" +
-                "\n" +
+                "using System.Threading.Tasks;\n");
+            sbUsing.Append("\n");
+
+            foreach (DataBaseTable item in _listItensDataBase)
+            {
+                sbClass.Append($"        public {item.getAliasStringType()} {item.Field}" + " { get; set; }\n\n");
+            }
+
+            sbBodyCode.Append("" +
                 $"namespace {nameSpace}\n" +
                 "{\n" +
                 "    public class DataBaseTable\n" +
                 "    {\n" +
-                "        public string Field { get; set; }\n\n" +
-                "        public bool Nullable { get; set; }\n\n" +
-                "        public string Key { get; set; }\n\n" +
+                $"{sbClass}" +
                 "    }\n" +
                 "}");
 
@@ -62,7 +69,7 @@ namespace CRUDConstructor.View
 
             using(var writer  = new StreamWriter(completePath))
             {
-                writer.Write(sb);
+                writer.Write(string.Concat(sbUsing, sbBodyCode));
             }
 
             MessageBox.Show("Save successfully!");

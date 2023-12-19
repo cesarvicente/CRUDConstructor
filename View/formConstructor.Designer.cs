@@ -226,7 +226,6 @@
         private ListBox lbColumns;
         private DataGridView dgvColumns;
         private BindingSource dataBaseTableBindingSource;
-        private DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn SELECTED;
         private DataGridViewTextBoxColumn fieldDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn DbType;

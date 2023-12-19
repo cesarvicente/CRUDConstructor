@@ -8,6 +8,17 @@ namespace CRUDConstructor.Model
 {
     public class DataBaseTable
     {
+        public DataBaseTable()
+        {
+            //PARAMETROS
+        }
+
+        public DataBaseTable(string nome)
+        {
+            var item = new DataBaseTable();
+            //item.nome = nome;
+
+        }
         public string Field { get; set; }
 
         private string _typeFormat;
@@ -70,6 +81,21 @@ namespace CRUDConstructor.Model
                     codeType = typeof(string);
                     break;
             }
+        }
+
+        public string getAliasStringType()
+        {
+            var dic = new Dictionary<Type, string>();
+            dic.Add(typeof(string), "string");
+            dic.Add(typeof(int), "int");
+            dic.Add(typeof(double), "double");
+            dic.Add(typeof(decimal), "decimal");
+            dic.Add(typeof(bool), "bool");
+            dic.Add(typeof(DateTime), Nullable ? "DateTime?" : "DateTime");
+            dic.Add(typeof(byte[]), "byte[]");
+            return dic[codeType] == null ? "string" : dic[codeType];
+
+            //VALIDAR NULL + DEFAULT VALUE != null
         }
 
     }
