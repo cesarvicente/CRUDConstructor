@@ -35,10 +35,7 @@
             lblTable = new Label();
             gbColumns = new GroupBox();
             dgvColumns = new DataGridView();
-            dataBaseTableBindingSource2 = new BindingSource(components);
-            dataBaseTableBindingSource = new BindingSource(components);
-            lbColumns = new ListBox();
-            dataBaseTableBindingSource1 = new BindingSource(components);
+            SELECTED = new DataGridViewCheckBoxColumn();
             fieldDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DbType = new DataGridViewTextBoxColumn();
             cbTypeColumn = new DataGridViewComboBoxColumn();
@@ -46,11 +43,12 @@
             keyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             defaultValueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             extraArgumentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataBaseTableBindingSource = new BindingSource(components);
+            lbColumns = new ListBox();
+            btNext = new Button();
             gbColumns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvColumns).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // cbTable
@@ -97,7 +95,7 @@
             dgvColumns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvColumns.ColumnHeadersHeight = 30;
             dgvColumns.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvColumns.Columns.AddRange(new DataGridViewColumn[] { fieldDataGridViewTextBoxColumn, DbType, cbTypeColumn, nullableDataGridViewCheckBoxColumn, keyDataGridViewTextBoxColumn, defaultValueDataGridViewTextBoxColumn, extraArgumentsDataGridViewTextBoxColumn });
+            dgvColumns.Columns.AddRange(new DataGridViewColumn[] { SELECTED, fieldDataGridViewTextBoxColumn, DbType, cbTypeColumn, nullableDataGridViewCheckBoxColumn, keyDataGridViewTextBoxColumn, defaultValueDataGridViewTextBoxColumn, extraArgumentsDataGridViewTextBoxColumn });
             dgvColumns.DataSource = dataBaseTableBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
@@ -115,27 +113,13 @@
             dgvColumns.Size = new Size(612, 289);
             dgvColumns.TabIndex = 7;
             // 
-            // dataBaseTableBindingSource2
+            // SELECTED
             // 
-            dataBaseTableBindingSource2.DataSource = typeof(Model.DataBaseTable);
-            // 
-            // dataBaseTableBindingSource
-            // 
-            dataBaseTableBindingSource.DataSource = typeof(Model.DataBaseTable);
-            // 
-            // lbColumns
-            // 
-            lbColumns.FormattingEnabled = true;
-            lbColumns.ItemHeight = 15;
-            lbColumns.Location = new Point(6, 22);
-            lbColumns.Name = "lbColumns";
-            lbColumns.Size = new Size(178, 289);
-            lbColumns.TabIndex = 7;
-            lbColumns.SelectedValueChanged += lbColumns_SelectedValueChanged;
-            // 
-            // dataBaseTableBindingSource1
-            // 
-            dataBaseTableBindingSource1.DataSource = typeof(Model.DataBaseTable);
+            SELECTED.DataPropertyName = "Selected";
+            SELECTED.HeaderText = "CK";
+            SELECTED.Name = "SELECTED";
+            SELECTED.Resizable = DataGridViewTriState.False;
+            SELECTED.Width = 30;
             // 
             // fieldDataGridViewTextBoxColumn
             // 
@@ -154,10 +138,8 @@
             // cbTypeColumn
             // 
             cbTypeColumn.DataPropertyName = "codeType";
-            cbTypeColumn.DataSource = dataBaseTableBindingSource2;
             cbTypeColumn.HeaderText = "C# Type";
             cbTypeColumn.Name = "cbTypeColumn";
-            cbTypeColumn.ValueMember = "codeType";
             // 
             // nullableDataGridViewCheckBoxColumn
             // 
@@ -191,11 +173,36 @@
             extraArgumentsDataGridViewTextBoxColumn.Name = "extraArgumentsDataGridViewTextBoxColumn";
             extraArgumentsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // dataBaseTableBindingSource
+            // 
+            dataBaseTableBindingSource.DataSource = typeof(Model.DataBaseTable);
+            // 
+            // lbColumns
+            // 
+            lbColumns.FormattingEnabled = true;
+            lbColumns.ItemHeight = 15;
+            lbColumns.Location = new Point(6, 22);
+            lbColumns.Name = "lbColumns";
+            lbColumns.Size = new Size(178, 289);
+            lbColumns.TabIndex = 7;
+            lbColumns.SelectedValueChanged += lbColumns_SelectedValueChanged;
+            // 
+            // btNext
+            // 
+            btNext.Location = new Point(660, 389);
+            btNext.Name = "btNext";
+            btNext.Size = new Size(160, 41);
+            btNext.TabIndex = 7;
+            btNext.Text = "Next";
+            btNext.UseVisualStyleBackColor = true;
+            btNext.Click += btNext_Click;
+            // 
             // formConstructor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(832, 395);
+            ClientSize = new Size(832, 442);
+            Controls.Add(btNext);
             Controls.Add(gbColumns);
             Controls.Add(lblTable);
             Controls.Add(cbTable);
@@ -206,9 +213,7 @@
             Text = "Settings";
             gbColumns.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvColumns).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataBaseTableBindingSource1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,9 +226,8 @@
         private ListBox lbColumns;
         private DataGridView dgvColumns;
         private BindingSource dataBaseTableBindingSource;
-        private BindingSource dataBaseTableBindingSource1;
-        private BindingSource dataBaseTableBindingSource2;
         private DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn SELECTED;
         private DataGridViewTextBoxColumn fieldDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn DbType;
         private DataGridViewComboBoxColumn cbTypeColumn;
@@ -231,5 +235,6 @@
         private DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn defaultValueDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn extraArgumentsDataGridViewTextBoxColumn;
+        private Button btNext;
     }
 }

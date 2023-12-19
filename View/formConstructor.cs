@@ -59,5 +59,25 @@ namespace CRUDConstructor.View
             loadCBTypes();
         }
 
+        private List<DataBaseTable> getColumns()
+        {
+            var listRows = new List<DataBaseTable>();
+
+            listRows = (List<DataBaseTable>)dgvColumns.DataSource;
+
+            return listRows;
+        }
+
+        private void EnabledComponents(bool disabled)
+        {
+            Enabled = disabled;
+        }
+
+        private void btNext_Click(object sender, EventArgs e)
+        {
+            EnabledComponents(false);
+            new formConfigMVC(getColumns()).ShowDialog();
+            EnabledComponents(true);
+        }
     }
 }
