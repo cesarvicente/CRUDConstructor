@@ -13,7 +13,7 @@ namespace CRUDConstructor.Model
             //PARAMETROS
         }
 
-        public DataBaseTable(string nome)
+        public DataBaseTable(string nome) : this()
         {
             var item = new DataBaseTable();
             //item.nome = nome;

@@ -22,13 +22,15 @@ namespace CRUDConstructor.View
 
         private void selectPathDestination()
         {
-            var browseFolder = new FolderBrowserDialog();
+            var browseFolder = new OpenFileDialog();
 
-            browseFolder.Description = "Selecione Pasta de Destino";
+            browseFolder.Filter = "Arquivos de Projeto (*.csproj)|*.csproj";
+
+            browseFolder.Title = "Selecione Pasta de Destino";
 
             browseFolder.ShowDialog();
 
-            txtFolderPath.Text = browseFolder.SelectedPath;
+            txtProjectPath.Text = browseFolder.FileName;
         }
 
         private void createModelArchive()
@@ -61,7 +63,7 @@ namespace CRUDConstructor.View
                 "    }\n" +
                 "}");
 
-            string completePath = string.Concat(txtFolderPath.Text, "\\Model.cs");
+            string completePath = string.Concat(txtProjectPath.Text, "\\Model.cs");
 
             var fs = File.Create(completePath);
 
@@ -82,7 +84,7 @@ namespace CRUDConstructor.View
 
         private void btGenerate_Click(object sender, EventArgs e)
         {
-            if (txtFolderPath.Text == string.Empty) selectPathDestination();
+            if (txtProjectPath.Text == string.Empty) selectPathDestination();
             createModelArchive();
         }
     }
