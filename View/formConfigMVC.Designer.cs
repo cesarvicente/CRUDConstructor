@@ -33,22 +33,22 @@
             txtProjectPath = new TextBox();
             btFindProject = new Button();
             gbPasta = new GroupBox();
-            label1 = new Label();
+            ckNoUseController = new CheckBox();
+            ckNoUseDao = new CheckBox();
+            ckNoUseModel = new CheckBox();
             ckNoUseProject = new CheckBox();
-            txtModelPath = new TextBox();
-            button1 = new Button();
-            lblModelFolder = new Label();
-            txtDaoPath = new TextBox();
-            button2 = new Button();
-            lblDataAccessObject = new Label();
-            txtControllerPath = new TextBox();
-            button3 = new Button();
             lblController = new Label();
+            button3 = new Button();
+            lblDataAccessObject = new Label();
+            button2 = new Button();
+            lblModelFolder = new Label();
+            txtControllerPath = new TextBox();
+            button1 = new Button();
+            txtDaoPath = new TextBox();
+            label1 = new Label();
+            txtModelPath = new TextBox();
             gbDAO = new GroupBox();
             gbContrller = new GroupBox();
-            ckNoUseModel = new CheckBox();
-            ckNoUseDao = new CheckBox();
-            ckNoUseController = new CheckBox();
             gbPasta.SuspendLayout();
             SuspendLayout();
             // 
@@ -117,14 +117,41 @@
             gbPasta.TabStop = false;
             gbPasta.Text = "Folders";
             // 
-            // label1
+            // ckNoUseController
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Project";
+            ckNoUseController.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ckNoUseController.AutoSize = true;
+            ckNoUseController.CheckAlign = ContentAlignment.MiddleRight;
+            ckNoUseController.Location = new Point(496, 213);
+            ckNoUseController.Name = "ckNoUseController";
+            ckNoUseController.Size = new Size(120, 19);
+            ckNoUseController.TabIndex = 5;
+            ckNoUseController.Text = "No Use Controller";
+            ckNoUseController.UseVisualStyleBackColor = true;
+            // 
+            // ckNoUseDao
+            // 
+            ckNoUseDao.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ckNoUseDao.AutoSize = true;
+            ckNoUseDao.CheckAlign = ContentAlignment.MiddleRight;
+            ckNoUseDao.Location = new Point(454, 145);
+            ckNoUseDao.Name = "ckNoUseDao";
+            ckNoUseDao.Size = new Size(162, 19);
+            ckNoUseDao.TabIndex = 5;
+            ckNoUseDao.Text = "No Use DataAccessObject";
+            ckNoUseDao.UseVisualStyleBackColor = true;
+            // 
+            // ckNoUseModel
+            // 
+            ckNoUseModel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ckNoUseModel.AutoSize = true;
+            ckNoUseModel.CheckAlign = ContentAlignment.MiddleRight;
+            ckNoUseModel.Location = new Point(515, 83);
+            ckNoUseModel.Name = "ckNoUseModel";
+            ckNoUseModel.Size = new Size(101, 19);
+            ckNoUseModel.TabIndex = 5;
+            ckNoUseModel.Text = "No Use Model";
+            ckNoUseModel.UseVisualStyleBackColor = true;
             // 
             // ckNoUseProject
             // 
@@ -138,73 +165,14 @@
             ckNoUseProject.Text = "No Use Project";
             ckNoUseProject.UseVisualStyleBackColor = true;
             // 
-            // txtModelPath
+            // lblController
             // 
-            txtModelPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtModelPath.Location = new Point(6, 107);
-            txtModelPath.Name = "txtModelPath";
-            txtModelPath.Size = new Size(586, 23);
-            txtModelPath.TabIndex = 2;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.BackgroundImage = Properties.Resources._3767084;
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.Location = new Point(591, 108);
-            button1.Name = "button1";
-            button1.Size = new Size(25, 23);
-            button1.TabIndex = 3;
-            button1.TextAlign = ContentAlignment.BottomRight;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += btFind_Click;
-            // 
-            // lblModelFolder
-            // 
-            lblModelFolder.AutoSize = true;
-            lblModelFolder.Location = new Point(6, 89);
-            lblModelFolder.Name = "lblModelFolder";
-            lblModelFolder.Size = new Size(41, 15);
-            lblModelFolder.TabIndex = 4;
-            lblModelFolder.Text = "Model";
-            // 
-            // txtDaoPath
-            // 
-            txtDaoPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtDaoPath.Location = new Point(6, 169);
-            txtDaoPath.Name = "txtDaoPath";
-            txtDaoPath.Size = new Size(586, 23);
-            txtDaoPath.TabIndex = 2;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.BackgroundImage = Properties.Resources._3767084;
-            button2.BackgroundImageLayout = ImageLayout.Zoom;
-            button2.Location = new Point(591, 170);
-            button2.Name = "button2";
-            button2.Size = new Size(25, 23);
-            button2.TabIndex = 3;
-            button2.TextAlign = ContentAlignment.BottomRight;
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += btFind_Click;
-            // 
-            // lblDataAccessObject
-            // 
-            lblDataAccessObject.AutoSize = true;
-            lblDataAccessObject.Location = new Point(6, 151);
-            lblDataAccessObject.Name = "lblDataAccessObject";
-            lblDataAccessObject.Size = new Size(102, 15);
-            lblDataAccessObject.TabIndex = 4;
-            lblDataAccessObject.Text = "DataAccessObject";
-            // 
-            // txtControllerPath
-            // 
-            txtControllerPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtControllerPath.Location = new Point(6, 237);
-            txtControllerPath.Name = "txtControllerPath";
-            txtControllerPath.Size = new Size(586, 23);
-            txtControllerPath.TabIndex = 2;
+            lblController.AutoSize = true;
+            lblController.Location = new Point(6, 219);
+            lblController.Name = "lblController";
+            lblController.Size = new Size(60, 15);
+            lblController.TabIndex = 4;
+            lblController.Text = "Controller";
             // 
             // button3
             // 
@@ -217,16 +185,81 @@
             button3.TabIndex = 3;
             button3.TextAlign = ContentAlignment.BottomRight;
             button3.UseVisualStyleBackColor = true;
-            button3.Click += btFind_Click;
             // 
-            // lblController
+            // lblDataAccessObject
             // 
-            lblController.AutoSize = true;
-            lblController.Location = new Point(6, 219);
-            lblController.Name = "lblController";
-            lblController.Size = new Size(60, 15);
-            lblController.TabIndex = 4;
-            lblController.Text = "Controller";
+            lblDataAccessObject.AutoSize = true;
+            lblDataAccessObject.Location = new Point(6, 151);
+            lblDataAccessObject.Name = "lblDataAccessObject";
+            lblDataAccessObject.Size = new Size(102, 15);
+            lblDataAccessObject.TabIndex = 4;
+            lblDataAccessObject.Text = "DataAccessObject";
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button2.BackgroundImage = Properties.Resources._3767084;
+            button2.BackgroundImageLayout = ImageLayout.Zoom;
+            button2.Location = new Point(591, 170);
+            button2.Name = "button2";
+            button2.Size = new Size(25, 23);
+            button2.TabIndex = 3;
+            button2.TextAlign = ContentAlignment.BottomRight;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // lblModelFolder
+            // 
+            lblModelFolder.AutoSize = true;
+            lblModelFolder.Location = new Point(6, 89);
+            lblModelFolder.Name = "lblModelFolder";
+            lblModelFolder.Size = new Size(41, 15);
+            lblModelFolder.TabIndex = 4;
+            lblModelFolder.Text = "Model";
+            // 
+            // txtControllerPath
+            // 
+            txtControllerPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtControllerPath.Location = new Point(6, 237);
+            txtControllerPath.Name = "txtControllerPath";
+            txtControllerPath.Size = new Size(586, 23);
+            txtControllerPath.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button1.BackgroundImage = Properties.Resources._3767084;
+            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Location = new Point(591, 108);
+            button1.Name = "button1";
+            button1.Size = new Size(25, 23);
+            button1.TabIndex = 3;
+            button1.TextAlign = ContentAlignment.BottomRight;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // txtDaoPath
+            // 
+            txtDaoPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtDaoPath.Location = new Point(6, 169);
+            txtDaoPath.Name = "txtDaoPath";
+            txtDaoPath.Size = new Size(586, 23);
+            txtDaoPath.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Project";
+            // 
+            // txtModelPath
+            // 
+            txtModelPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtModelPath.Location = new Point(6, 107);
+            txtModelPath.Name = "txtModelPath";
+            txtModelPath.Size = new Size(586, 23);
+            txtModelPath.TabIndex = 2;
             // 
             // gbDAO
             // 
@@ -245,42 +278,6 @@
             gbContrller.TabIndex = 0;
             gbContrller.TabStop = false;
             gbContrller.Text = "Controller";
-            // 
-            // ckNoUseModel
-            // 
-            ckNoUseModel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ckNoUseModel.AutoSize = true;
-            ckNoUseModel.CheckAlign = ContentAlignment.MiddleRight;
-            ckNoUseModel.Location = new Point(515, 83);
-            ckNoUseModel.Name = "ckNoUseModel";
-            ckNoUseModel.Size = new Size(101, 19);
-            ckNoUseModel.TabIndex = 5;
-            ckNoUseModel.Text = "No Use Model";
-            ckNoUseModel.UseVisualStyleBackColor = true;
-            // 
-            // ckNoUseDao
-            // 
-            ckNoUseDao.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ckNoUseDao.AutoSize = true;
-            ckNoUseDao.CheckAlign = ContentAlignment.MiddleRight;
-            ckNoUseDao.Location = new Point(454, 145);
-            ckNoUseDao.Name = "ckNoUseDao";
-            ckNoUseDao.Size = new Size(162, 19);
-            ckNoUseDao.TabIndex = 5;
-            ckNoUseDao.Text = "No Use DataAccessObject";
-            ckNoUseDao.UseVisualStyleBackColor = true;
-            // 
-            // ckNoUseController
-            // 
-            ckNoUseController.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ckNoUseController.AutoSize = true;
-            ckNoUseController.CheckAlign = ContentAlignment.MiddleRight;
-            ckNoUseController.Location = new Point(496, 213);
-            ckNoUseController.Name = "ckNoUseController";
-            ckNoUseController.Size = new Size(120, 19);
-            ckNoUseController.TabIndex = 5;
-            ckNoUseController.Text = "No Use Controller";
-            ckNoUseController.UseVisualStyleBackColor = true;
             // 
             // formConfigMVC
             // 
