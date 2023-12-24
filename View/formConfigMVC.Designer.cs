@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             gbModel = new GroupBox();
-            btGenerate = new Button();
+            btCreate = new Button();
             txtProjectPath = new TextBox();
             btFindProject = new Button();
             gbPasta = new GroupBox();
@@ -49,6 +49,8 @@
             txtModelPath = new TextBox();
             gbDAO = new GroupBox();
             gbContrller = new GroupBox();
+            txtArchiveName = new TextBox();
+            lblArchiveName = new Label();
             gbPasta.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,15 +63,16 @@
             gbModel.TabStop = false;
             gbModel.Text = "Model";
             // 
-            // btGenerate
+            // btCreate
             // 
-            btGenerate.Location = new Point(12, 517);
-            btGenerate.Name = "btGenerate";
-            btGenerate.Size = new Size(622, 32);
-            btGenerate.TabIndex = 1;
-            btGenerate.Text = "Create";
-            btGenerate.UseVisualStyleBackColor = true;
-            btGenerate.Click += btGenerate_Click;
+            btCreate.Enabled = false;
+            btCreate.Location = new Point(222, 531);
+            btCreate.Name = "btCreate";
+            btCreate.Size = new Size(411, 25);
+            btCreate.TabIndex = 1;
+            btCreate.Text = "Create";
+            btCreate.UseVisualStyleBackColor = true;
+            btCreate.Click += btGenerate_Click;
             // 
             // txtProjectPath
             // 
@@ -279,16 +282,36 @@
             gbContrller.TabStop = false;
             gbContrller.Text = "Controller";
             // 
+            // txtArchiveName
+            // 
+            txtArchiveName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtArchiveName.Location = new Point(97, 532);
+            txtArchiveName.Name = "txtArchiveName";
+            txtArchiveName.Size = new Size(118, 23);
+            txtArchiveName.TabIndex = 2;
+            txtArchiveName.TextChanged += txtArchiveName_TextChanged;
+            // 
+            // lblArchiveName
+            // 
+            lblArchiveName.AutoSize = true;
+            lblArchiveName.Location = new Point(12, 535);
+            lblArchiveName.Name = "lblArchiveName";
+            lblArchiveName.Size = new Size(79, 15);
+            lblArchiveName.TabIndex = 4;
+            lblArchiveName.Text = "Model Name:";
+            // 
             // formConfigMVC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(645, 561);
-            Controls.Add(btGenerate);
+            ClientSize = new Size(645, 566);
+            Controls.Add(btCreate);
             Controls.Add(gbPasta);
             Controls.Add(gbContrller);
             Controls.Add(gbDAO);
             Controls.Add(gbModel);
+            Controls.Add(txtArchiveName);
+            Controls.Add(lblArchiveName);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "formConfigMVC";
@@ -297,12 +320,13 @@
             gbPasta.ResumeLayout(false);
             gbPasta.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private GroupBox gbModel;
-        private Button btGenerate;
+        private Button btCreate;
         private TextBox txtProjectPath;
         private Button btFindProject;
         private GroupBox gbPasta;
@@ -322,5 +346,7 @@
         private CheckBox ckNoUseController;
         private CheckBox ckNoUseDao;
         private CheckBox ckNoUseModel;
+        private TextBox txtArchiveName;
+        private Label lblArchiveName;
     }
 }

@@ -63,13 +63,13 @@ namespace CRUDConstructor.View
                 "    }\n" +
                 "}");
 
-            string completePath = string.Concat(txtProjectPath.Text, "\\Model.cs");
+            string completePath = string.Concat(txtModelPath.Text, $"\\{txtArchiveName.Text}.cs");
 
             var fs = File.Create(completePath);
 
             fs.Close();
 
-            using(var writer  = new StreamWriter(completePath))
+            using (var writer = new StreamWriter(completePath))
             {
                 writer.Write(string.Concat(sbUsing, sbBodyCode));
             }
@@ -86,6 +86,13 @@ namespace CRUDConstructor.View
         {
             if (txtProjectPath.Text == string.Empty) selectPathDestination();
             createModelArchive();
+        }
+
+        private void txtArchiveName_TextChanged(object sender, EventArgs e)
+        {
+            var listCharacteres = new List<char>() { ' ', '/', '\\', ':', '*', '?', '"', '<', '>', '|', '.' };
+            bool contain = txtArchiveName.Text.Any(c => listCharacteres.Contains(c));
+            btCreate.Enabled = !(txtArchiveName.Text == string.Empty) && !contain;
         }
     }
 }
